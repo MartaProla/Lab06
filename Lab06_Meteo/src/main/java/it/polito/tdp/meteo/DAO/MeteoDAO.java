@@ -44,5 +44,15 @@ public class MeteoDAO {
 		return null;
 	}
 
+	public double getUmidtàMedia() {
+		
+		return 0.0;
+	}
+	
+	
+	
+
+	
+
 
 }
