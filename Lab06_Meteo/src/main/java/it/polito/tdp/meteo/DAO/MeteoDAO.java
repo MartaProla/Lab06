@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import it.polito.tdp.meteo.model.Citta;
 import it.polito.tdp.meteo.model.Rilevamento;
 
 public class MeteoDAO {
@@ -49,36 +50,33 @@ public class MeteoDAO {
 		return null;
 	}
 
-	public Map<String, Double>getUmidtàMedia(int mese) {
-		final String sql = "SELECT localita,  AVG(umidita) AS media " + 
-							"FROM situazione s " + 
-							"WHERE MONTH(`Data`)=? " + 
-							"GROUP BY localita ";
-		this.mappaUmidita=new HashMap<String,Double>();
+	public Double getUmiditaMedia(int mese, Citta citta) {
+
+		final String sql = "SELECT AVG(Umidita) AS U FROM situazione " +
+						   "WHERE localita=? AND MONTH(data)=? ";
 
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
-			st.setInt(1, mese);
-			ResultSet rs = st.executeQuery();
 			
+			st.setString(1, citta.getNome());
+			//st.setString(2, mese.getValue()); se fosse un oggetto month
+			st.setString(2, Integer.toString(mese)); 
 
-			while (rs.next()) {
+			ResultSet rs = st.executeQuery();
 
-				mappaUmidita.put(rs.getString("localita"), rs.getDouble("media"));
-			}
+			rs.next(); // si posiziona sulla prima (ed unica) riga
+			Double u = rs.getDouble("U");
 
 			conn.close();
-			return mappaUmidita;
-
+			return u;
+			
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 		
 	}
-	
 	
 	
 

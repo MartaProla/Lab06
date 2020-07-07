@@ -45,8 +45,7 @@ public class FXMLController {
     @FXML
     void doCalcolaUmidita(ActionEvent event) {
     	Integer mese= boxMese.getValue();
-    	Map<String,Double>map=new HashMap<String,Double>(this.model.getUmiditaMedia(mese));
-    	txtResult.appendText(map.toString());
+    	
 
     }
     

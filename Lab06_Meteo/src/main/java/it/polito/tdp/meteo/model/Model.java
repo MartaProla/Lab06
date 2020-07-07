@@ -20,9 +20,9 @@ public class Model {
 	}
 
 	// of course you can change the String output with what you think works best
-	public Map<String,Double>getUmiditaMedia(int mese) {
+	public double getUmiditaMedia(int mese,Citta citta) {
 		
-		return dao.getUmidtàMedia(mese);
+		return dao.getUmiditaMedia(mese,citta);
 	}
 	
 	// of course you can change the String output with what you think works best
