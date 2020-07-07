@@ -43,9 +43,12 @@ public class Rilevamento {
 	// return localita + " " + data + " " + umidita;
 	// }
 
-	@Override
+	/*@Override
 	public String toString() {
 		return String.valueOf(umidita);
+	}*/
+	public String toString(){
+		return localita+" "+ umidita+"\n";
 	}
 
 	

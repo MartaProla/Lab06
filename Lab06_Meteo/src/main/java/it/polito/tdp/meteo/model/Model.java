@@ -1,6 +1,7 @@
 package it.polito.tdp.meteo.model;
 
 import java.util.List;
+import java.util.Map;
 
 import it.polito.tdp.meteo.DAO.MeteoDAO;
 
@@ -19,9 +20,9 @@ public class Model {
 	}
 
 	// of course you can change the String output with what you think works best
-	public double getUmiditaMedia(int mese) {
+	public Map<String,Double>getUmiditaMedia(int mese) {
 		
-		return dao.getUmidtàMedia();
+		return dao.getUmidtàMedia(mese);
 	}
 	
 	// of course you can change the String output with what you think works best

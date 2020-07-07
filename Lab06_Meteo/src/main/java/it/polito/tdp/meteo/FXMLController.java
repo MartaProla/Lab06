@@ -5,7 +5,8 @@
 package it.polito.tdp.meteo;
 
 import java.net.URL;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.meteo.model.Model;
@@ -43,6 +44,9 @@ public class FXMLController {
 
     @FXML
     void doCalcolaUmidita(ActionEvent event) {
+    	Integer mese= boxMese.getValue();
+    	Map<String,Double>map=new HashMap<String,Double>(this.model.getUmiditaMedia(mese));
+    	txtResult.appendText(map.toString());
 
     }
     
